@@ -1,18 +1,34 @@
-import React from "react";
-import logo from "./logo.png";
-import "./App.css";
+import React from 'react';
+import Grid from "@material-ui/core/Grid";
+import {makeStyles} from '@material-ui/core/styles';
+import {useOvermind} from "./Others/OvermindHelper";
 
-function App() {
+const getThemeObj = (theme) => {
+    return {}
+}
+
+const useStyles = makeStyles((theme) => (getThemeObj(theme)))
+
+const App = (props) => {
+    const {state, actions} = useOvermind()
+    const classes = useStyles();
+
     return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-            </header>
-        </div>
+        <Grid>
+            <p>Counter: {state.counter}</p>
+            <button onClick={() => {
+                actions.increaseCounter(1)
+            }}>+
+            </button>
+            <button onClick={() => {
+                actions.increaseCounter(-1)
+            }}>-
+            </button>
+
+        </Grid>
     );
 }
+
+App.propTypes = {};
 
 export default App;
