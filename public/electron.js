@@ -1,7 +1,10 @@
-const { app, BrowserWindow } = require("electron");
+const {app, BrowserWindow} = require("electron");
 
 const path = require("path");
 const isDev = require("electron-is-dev");
+
+if (isDev) // To debug easily in WebsTorm
+    app.commandLine.appendSwitch('remote-debugging-port', '9229')
 
 let mainWindow;
 
@@ -14,7 +17,8 @@ async function createWindow() {
             } = require("electron-devtools-installer");
             const name = await installExtension(REACT_DEVELOPER_TOOLS, true);
             console.log(name, "was installed");
-        } catch (error) {}
+        } catch (error) {
+        }
     }
     mainWindow = new BrowserWindow({
         width: 1050,
@@ -26,10 +30,16 @@ async function createWindow() {
             "icon.ico"
         ),
     });
+
+    if (!isDev)
+        mainWindow.setMenu(null)
+    mainWindow.maximize()
+
     mainWindow.on("ready-to-show", async () => {
         mainWindow.show();
-        if (isDev) mainWindow.webContents.openDevTools({ mode: "undocked" });
+        if (isDev) mainWindow.webContents.openDevTools({mode: "undocked"});
     });
+
     mainWindow.on("closed", () => (mainWindow = null));
     mainWindow.loadURL(
         isDev
