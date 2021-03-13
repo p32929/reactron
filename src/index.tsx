@@ -1,11 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
-import {overmind} from "./Others/OvermindHelper";
-import {Provider} from "overmind-react";
 import {ThemeProvider} from '@material-ui/core/styles';
+import {Provider} from "overmind-react";
+import {createOvermind} from 'overmind'
+import {config} from './Overmind/OvermindHelper'
+import App from "./App";
 import {theme} from "./Others/Theme";
+
+const overmind = createOvermind(config)
 
 ReactDOM.render(
     <React.StrictMode>
