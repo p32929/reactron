@@ -12,6 +12,7 @@ Reactron is a tiny Electron project configured to work with React as frontend. T
 ### What is included
 * React
 * Electron
+* TypeScript
 * Overmind
 * MaterialUI
 * etc
