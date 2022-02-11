@@ -143,7 +143,7 @@ process.once('loaded', () => {
         }
     }
 
-    partitionName = `persist:123123123123123`
+    partitionName = `persist:fay`
     const nightmare = Nightmare({
         show: true,
         executionTimeout: 604800000,
