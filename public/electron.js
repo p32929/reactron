@@ -23,17 +23,19 @@ async function createWindow() {
     mainWindow = new BrowserWindow({
         width: 1050,
         height: 625,
-        show: false,
+        webPreferences: {
+            nodeIntegration: true,
+            contextIsolation: false,
+            enableRemoteModule: true,
+            preload: path.join(__dirname, 'preload.js'),
+            nativeWindowOpen: true
+        },
         icon: path.join(
             isDev ? process.cwd() + "/resources" : process.resourcesPath,
             "media",
             "icon.ico"
         ),
     });
-
-    if (!isDev)
-        mainWindow.setMenu(null)
-    mainWindow.maximize()
 
     mainWindow.on("ready-to-show", async () => {
         mainWindow.show();
