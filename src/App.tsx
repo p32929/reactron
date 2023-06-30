@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { Button, Grid, Theme, Typography } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
-import { NightmareUtils } from './Others/NightmareUtils';
 import { useSelector } from 'react-redux';
 import { controller } from './Others/StatesController';
 
@@ -19,15 +18,15 @@ const useStyles = makeStyles((theme: Theme) => (getThemeObj(theme)))
 
 const App: React.FC<Props> = (props) => {
     const classes = useStyles();
-    const counter = useSelector(() => controller.counter);
+    const states = useSelector(() => controller.states);
 
     useEffect(() => {
         console.log("Counter changed")
-    }, [counter])
+    }, [states])
 
     return <Grid style={{ height: 200 }} container direction='column' justify='center' alignContent='center'
         alignItems='center'>
-        <Typography>Counter: {counter}</Typography>
+        <Typography>Counter: {states.counter}</Typography>
 
         <Button className={classes.button} variant='contained' color='primary' onClick={() => {
             controller.increase()
@@ -35,10 +34,6 @@ const App: React.FC<Props> = (props) => {
         <Button className={classes.button} variant='contained' color='primary' onClick={() => {
             controller.decrease()
         }}>-</Button>
-
-        <Button onClick={async () => {
-            await NightmareUtils.openGoogle()
-        }}>Open nightmare</Button>
 
     </Grid>
 }

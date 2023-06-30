@@ -48,26 +48,26 @@
     }
   },
   "dependencies": {
+    "electron-is-dev": "^1.2.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-redux": "^8.0.2",
+    "react-scripts": "3.4.1",
+    "typescript": "^5.1.6",
+    "usm-redux": "^3.11.0"
+  },
+  "devDependencies": {
     "@types/jest": "^26.0.20",
     "@types/node": "^14.14.34",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.2",
-    "electron-is-dev": "^1.2.0",
-    "react-redux": "^8.0.2",
-    "typescript": "^4.2.3",
-    "usm-redux": "^3.11.0"
-  },
-  "devDependencies": {
-    "@material-ui/core": "^4.11.3",
     "@types/nightmare": "^2.10.6",
+    "@material-ui/core": "^4.11.3",
     "concurrently": "^5.1.0",
     "electron": "^8.2.3",
     "electron-builder": "^22.5.1",
     "electron-devtools-installer": "^3.0.0",
-    "nodemon": "^2.0.3",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "nodemon": "^2.0.3"
   },
   "browserslist": {
     "production": [
